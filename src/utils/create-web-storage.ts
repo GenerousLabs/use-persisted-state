@@ -8,7 +8,7 @@ function fireStorageEvent(changes: { [key: string]: StorageChange }) {
   })
 }
 
-window.addEventListener('storage', event => {
+typeof window !== 'undefined' && window.addEventListener('storage', event => {
   if (event.key) {
     const changes = {
       [event.key]: {
@@ -33,7 +33,7 @@ const onChanged: StorageChangeEvent = {
   },
 }
 
-export default (storage: globalThis.Storage): Storage => ({
+export default (storage?: globalThis.Storage): Storage => ({
   get: keys => {
     const result: { [key: string]: string } = {}
 

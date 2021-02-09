@@ -1,3 +1,5 @@
 import createStorage from '../utils/create-web-storage'
 
-export default createStorage(localStorage)
+const storage = typeof localStorage !== 'undefined' ? localStorage : undefined
+
+export default createStorage(storage)
